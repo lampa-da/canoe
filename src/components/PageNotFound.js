@@ -33,7 +33,6 @@ export const PageNotFound = () => {
           ></Box>
         </Grid>
       </Grid>
-      {/* Button Start */}
       <Grid container direction="column" sx={{ marginTop: "40px" }}>
         <Grid
           item

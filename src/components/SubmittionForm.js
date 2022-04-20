@@ -22,8 +22,8 @@ const SubmittionForm = ({ path }) => {
   const location = useLocation();
 
   const calculusSchema = Yup.string().test(
-    "contains-caltulus",
-    "The choice could be empty or should include calculus",
+    "contains-calculus",
+    "The choice could be empty or should include 'calculus'",
     (value) => value.toLowerCase().includes("calculus") || value === ""
   );
 
@@ -42,7 +42,7 @@ const SubmittionForm = ({ path }) => {
     resolver: yupResolver(validationSchema),
   });
 
-  //Success snackbar
+  //Success notification
   const [snackbar, setSnackbar] = useState(null);
   const handleCloseSnackbar = () => setSnackbar(null);
 
@@ -50,7 +50,7 @@ const SubmittionForm = ({ path }) => {
     try {
       await dispatch(addChoice(data));
       setSnackbar({
-        children: "Your form successfully submitted!",
+        children: "Your form has been successfully submitted!",
         severity: "success",
       });
       reset();
