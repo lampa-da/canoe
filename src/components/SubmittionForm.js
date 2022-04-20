@@ -12,25 +12,39 @@ import {
   Typography,
 } from "@mui/material";
 
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+
+
 import { addChoice } from "../store/choices";
 
 const SubmittionForm = ({ path }) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
+const calculusSchema = Yup.string().test(
+  "contains-caltulus", "Choice could be empty or should include calculus",
+((value) => (value.toLowerCase().includes("calculus") || value === "")),
+  )
+
+  const validationSchema = Yup.object().shape({
+    choiceA: calculusSchema,
+    choiceB: calculusSchema,
+    choiceC: calculusSchema,
+  })
+
   const {
     register,
     handleSubmit,
-    watch,
     formState: {
       errors,
       isSubmitting,
-      isSubmitSuccessful,
       isDirty,
-      dirtyFields,
     },
     reset,
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(validationSchema)
+  });
 
   //Success snackbar
   const [snackbar, setSnackbar] = useState(null);
@@ -104,34 +118,21 @@ const SubmittionForm = ({ path }) => {
                     id="choiceA"
                     label="Choice A"
                     variant="filled"
-                    {...register("choiceA", {
-                      validate: (val) => {
-                        if (!val.toLowerCase().includes("calculus") && !!val) {
-                          errors.choiceA = {};
-                          errors.choiceA.message = `Choice A could be empty or should include "calculus"`;
-                          console.log("errors.choiceA", errors.choiceA);
-                        }
-                      },
-                    })}
-                    error={!!errors?.choiceA ? true : false}
-                    helperText={errors?.choiceA ? errors.choiceA.message : null}
+                    defaultValue = ""
+                    {...register("choiceA")}
+                    error={errors.choiceA ? true : false}
+                    helperText={errors.choiceA ? errors.choiceA.message : null}
                     fullWidth
-                    // required
                   />
                 </Grid>
+              
                 <Grid item>
                   <TextField
                     id="choiceB"
                     label="Choice B"
                     variant="filled"
-                    {...register("choiceB", {
-                      validate: (val) => {
-                        if (!val.toLowerCase().includes("calculus") && !!val) {
-                          errors.choiceB = {};
-                          errors.choiceB.message = `Choice B could be empty or should include "calculus"`;
-                        }
-                      },
-                    })}
+                    defaultValue = ""
+                    {...register("choiceB")}
                     error={!!errors?.choiceB}
                     helperText={errors?.choiceB ? errors.choiceB.message : null}
                     fullWidth
@@ -142,14 +143,8 @@ const SubmittionForm = ({ path }) => {
                     id="choiceC"
                     label="Choice C"
                     variant="filled"
-                    {...register("choiceC", {
-                      validate: (val) => {
-                        if (!val.toLowerCase().includes("calculus") && !!val) {
-                          errors.choiceC = {};
-                          errors.choiceC.message = `Choice C could be empty or should include "calculus"`;
-                        }
-                      },
-                    })}
+                    defaultValue = ""
+                    {...register("choiceC")}
                     error={!!errors?.choiceC}
                     helperText={errors?.choiceC ? errors.choiceC.message : null}
                     fullWidth
