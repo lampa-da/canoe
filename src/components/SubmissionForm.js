@@ -68,7 +68,7 @@ const SubmissionForm = ({ path }) => {
       {!!snackbar && (
         <Snackbar
           open
-          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
           onClose={handleCloseSnackbar}
           autoHideDuration={6000}
         >
