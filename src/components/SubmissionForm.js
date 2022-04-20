@@ -17,7 +17,7 @@ import * as Yup from "yup";
 
 import { addChoice } from "../store/choices";
 
-const SubmittionForm = ({ path }) => {
+const SubmissionForm = ({ path }) => {
   const dispatch = useDispatch();
   const location = useLocation();
 
@@ -36,7 +36,7 @@ const SubmittionForm = ({ path }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting, isDirty },
+    formState: { errors, isSubmissing, isDirty },
     reset,
   } = useForm({
     resolver: yupResolver(validationSchema),
@@ -50,14 +50,14 @@ const SubmittionForm = ({ path }) => {
     try {
       await dispatch(addChoice(data));
       setSnackbar({
-        children: "Your form has been successfully submitted!",
+        children: "Your form has been successfully submissed!",
         severity: "success",
       });
       reset();
     } catch (err) {
       console.log(err);
       setSnackbar({
-        children: "Form could not be submitted!",
+        children: "Form could not be submissed!",
         severity: "error",
       });
     }
@@ -154,7 +154,7 @@ const SubmittionForm = ({ path }) => {
                     fullWidth
                     variant="contained"
                     type="submit"
-                    disabled={isSubmitting || !isDirty}
+                    disabled={isSubmissing || !isDirty}
                     form="submit-form"
                   >
                     Submit
@@ -170,4 +170,4 @@ const SubmittionForm = ({ path }) => {
   );
 };
 
-export default SubmittionForm;
+export default SubmissionForm;

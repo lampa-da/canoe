@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { getChoices } from "../store/choices";
 
 import Navbar from "../components/Navbar";
-import SubmittionForm from "../components/SubmittionForm";
+import SubmissionForm from "../components/SubmissionForm";
 import SummaryTable from "../components/SummaryTable";
 import PageNotFound from "../components/PageNotFound";
 
@@ -18,7 +18,7 @@ const Main = () => {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<SubmittionForm />} />
+        <Route path="/" element={<SubmissionForm />} />
         <Route path="/choices" element={<SummaryTable />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
