@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Grid, Box, Button } from '@mui/material';
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { Grid, Box, Button } from "@mui/material";
 
 export const PageNotFound = () => {
   const location = useLocation();
@@ -10,15 +10,15 @@ export const PageNotFound = () => {
   }, [location]);
 
   return (
-    <Box sx={{ minHeight: '100vh', marginTop: '150px', paddingBottom: '40px' }}>
+    <Box sx={{ minHeight: "100vh", marginTop: "150px", paddingBottom: "40px" }}>
       <Grid container direction="column">
         <Grid
           item
           xs={12}
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <Box
@@ -26,29 +26,29 @@ export const PageNotFound = () => {
             src="/images/404-Page.png"
             sx={{
               width: {
-                xs: '440px',
-                md: '600px',
+                xs: "440px",
+                md: "600px",
               },
             }}
           ></Box>
         </Grid>
       </Grid>
       {/* Button Start */}
-      <Grid container direction="column" sx={{ marginTop: '40px' }}>
+      <Grid container direction="column" sx={{ marginTop: "40px" }}>
         <Grid
           item
           xs={12}
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <Button
@@ -58,9 +58,9 @@ export const PageNotFound = () => {
               component="a"
               href="/"
               sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
               Return Home

@@ -1,8 +1,7 @@
-import React, { useState, useEffect }  from 'react';
-import { useSelector, useDispatch  } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getChoices } from '../store/choices';
-import { ThemeProvider } from "@mui/material/styles";
+import { getChoices } from "../store/choices";
 import { Box } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
@@ -10,15 +9,14 @@ import moment from "moment";
 
 export const SummaryTable = () => {
   const choices = useSelector((state) => state.choices);
-  
+
   const dispatch = useDispatch();
   const [rows, setRows] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(async () => {
     await dispatch(getChoices());
   }, []);
-  
+
   useEffect(() => {
     setRows(choices);
   }, [choices]);
@@ -61,23 +59,22 @@ export const SummaryTable = () => {
       renderCell: (params) => {
         return moment(params.value).format("L");
       },
-    }
+    },
   ];
 
   return (
-      <Box
-        sx={{
-          my: 4,
-          mx: 4,
-        }}
-        component="div"
-      >
-        <h3>View Choices of Courses</h3>
-        <div style={{ height: 650, width: "100%" }}>
-          <DataGrid rows={rows} columns={columns} />
-        </div>
-      </Box>
-
+    <Box
+      sx={{
+        my: 4,
+        mx: 4,
+      }}
+      component="div"
+    >
+      <h3>The Choices of the Courses</h3>
+      <div style={{ height: 650, width: "100%" }}>
+        <DataGrid rows={rows} columns={columns} />
+      </div>
+    </Box>
   );
 };
 export default SummaryTable;

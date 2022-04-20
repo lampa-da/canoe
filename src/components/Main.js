@@ -1,8 +1,9 @@
-import React, { useEffect, createContext, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import {getChoices} from "../store/choices"
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { getChoices } from "../store/choices";
 
+import Navbar from "../components/Navbar";
 import SubmittionForm from "../components/SubmittionForm";
 import SummaryTable from "../components/SummaryTable";
 import PageNotFound from "../components/PageNotFound";
@@ -15,13 +16,14 @@ const Main = () => {
   }, []);
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<SubmittionForm />} />
         <Route path="/choices" element={<SummaryTable />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
 export default Main;

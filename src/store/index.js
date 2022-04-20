@@ -7,15 +7,6 @@ const reducer = combineReducers({
   choices: choices,
 });
 
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// const store = createStore(
-//   reducer,
-//   composeEnhancers(applyMiddleware(thunk, logger))
-// );
-
-const store = createStore(
-  reducer,
-  applyMiddleware(thunk, logger)
-);
+const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 export default store;
